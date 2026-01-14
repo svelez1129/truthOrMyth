@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Truth or Myth?</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white min-h-screen p-8">
+
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-2xl font-bold mb-2">World Population Has Grown Rapidly Since 1950</h2>
+    <p class="text-slate-400 text-sm mb-4">Source: Our World in Data - UN World Population Prospects (2024)</p>
+    <p class="bg-slate-800 p-4 rounded-lg mb-6">"China's population growth rate has slowed down since the 1980s, while India's population has continued to grow at a steady pace."</p>
+    
+    <!-- Chart -->
+    <div class="bg-slate-800 p-4 rounded-lg mb-6">
+      <p class="text-sm text-slate-400 mb-2">Population, 1950 to 2023</p>
+      <svg width="500" height="320" class="mx-auto block">
+        <!-- Y-axis -->
+        <line x1="70" y1="30" x2="70" y2="260" stroke="#64748b" stroke-width="2"/>
+        <text x="60" y="35" fill="#94a3b8" font-size="10" text-anchor="end">1.4 billion</text>
+        <text x="60" y="68" fill="#94a3b8" font-size="10" text-anchor="end">1.2 billion</text>
+        <text x="60" y="101" fill="#94a3b8" font-size="10" text-anchor="end">1 billion</text>
+        <text x="60" y="134" fill="#94a3b8" font-size="10" text-anchor="end">800 million</text>
+        <text x="60" y="167" fill="#94a3b8" font-size="10" text-anchor="end">600 million</text>
+        <text x="60" y="200" fill="#94a3b8" font-size="10" text-anchor="end">400 million</text>
+        <text x="60" y="233" fill="#94a3b8" font-size="10" text-anchor="end">200 million</text>
+        <text x="60" y="260" fill="#94a3b8" font-size="10" text-anchor="end">0</text>
+        
+        <!-- X-axis -->
+        <line x1="70" y1="260" x2="470" y2="260" stroke="#64748b" stroke-width="2"/>
+        <text x="70" y="275" fill="#94a3b8" font-size="10" text-anchor="middle">1950</text>
+        <text x="124" y="275" fill="#94a3b8" font-size="10" text-anchor="middle">1960</text>
+        <text x="178" y="275" fill="#94a3b8" font-size="10" text-anchor="middle">1970</text>
+        <text x="232" y="275" fill="#94a3b8" font-size="10" text-anchor="middle">1980</text>
+        <text x="286" y="275" fill="#94a3b8" font-size="10" text-anchor="middle">1990</text>
+        <text x="340" y="275" fill="#94a3b8" font-size="10" text-anchor="middle">2000</text>
+        <text x="394" y="275" fill="#94a3b8" font-size="10" text-anchor="middle">2010</text>
+        <text x="448" y="275" fill="#94a3b8" font-size="10" text-anchor="middle">2023</text>
+        
+        <!-- India line (red/orange) -->
+        <polyline points="70,205 124,175 178,145 232,115 286,85 340,60 394,42 448,30" fill="none" stroke="#ef4444" stroke-width="2"/>
+        <text x="455" y="28" fill="#ef4444" font-size="10" text-anchor="start">India</text>
+        
+        <!-- China line (blue) -->
+        <polyline points="70,175 124,140 178,105 232,78 286,58 340,48 394,40 448,35" fill="none" stroke="#3b82f6" stroke-width="2"/>
+        <text x="455" y="40" fill="#3b82f6" font-size="10" text-anchor="start">China</text>
+        
+        <!-- United States line (purple) -->
+        <polyline points="70,230 124,225 178,218 232,212 286,205 340,197 394,190 448,183" fill="none" stroke="#8b5cf6" stroke-width="2"/>
+        <text x="455" y="183" fill="#8b5cf6" font-size="10" text-anchor="start">United States</text>
+        
+        <!-- Indonesia line (teal) -->
+        <polyline points="70,245 124,238 178,228 232,218 286,208 340,198 394,190 448,182" fill="none" stroke="#14b8a6" stroke-width="2"/>
+        <text x="455" y="195" fill="#14b8a6" font-size="10" text-anchor="start">Indonesia</text>
+        
+        <!-- Pakistan line (olive/yellow) -->
+        <polyline points="70,250 124,245 178,238 232,228 286,215 340,200 394,188 448,178" fill="none" stroke="#eab308" stroke-width="2"/>
+        <text x="455" y="207" fill="#eab308" font-size="10" text-anchor="start">Pakistan</text>
+      </svg>
+      <p class="text-slate-500 text-xs mt-2">Data source: UN, World Population Prospects (2024)</p>
+    </div>
+
+    <div id="answers" class="space-y-3">
+      <button class="w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left hover:border-cyan-400 hover:bg-slate-700 transition" data-answer="true">
+        <span class="answer-label text-green-400 font-bold text-lg">✓ TRUE</span>
+        <span class="text-slate-400 ml-2">This claim is accurate</span>
+      </button>
+      <button class="w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left hover:border-cyan-400 hover:bg-slate-700 transition" data-answer="false">
+        <span class="answer-label text-red-400 font-bold text-lg">✗ FALSE</span>
+        <span class="text-slate-400 ml-2">This claim is wrong</span>
+      </button>
+      <button class="w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left hover:border-cyan-400 hover:bg-slate-700 transition" data-answer="misleading">
+        <span class="answer-label text-amber-400 font-bold text-lg">⚠ MISLEADING</span>
+        <span class="text-slate-400 ml-2">Something's fishy</span>
+      </button>
+    </div>
+
+    <!-- Feedback (hidden by default) -->
+    <div id="feedback" class="mt-6 hidden">
+      <div id="feedback-box" class="p-4 rounded-lg">
+        <p id="feedback-text"></p>
+      </div>
+    </div>
+
+    <!-- Continue button (hidden until answered) -->
+    <div id="continue" class="mt-6 hidden">
+      <a href="scenario4.html" class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-6 py-3 rounded-lg inline-block">
+        Continue →
+      </a>
+    </div>
+  </div>
+
+  <script src="scenario3.js"></script>
+</body>
+</html>

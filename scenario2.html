@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Truth or Myth?</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white min-h-screen p-8">
+
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-2xl font-bold mb-2">Ice Cream Sales Cause Drowning!</h2>
+    <p class="text-slate-400 text-sm mb-4">Source: "A story of ice-cream, Drowning and causal modelling" by Andreas Raaskov</p>
+    <p class="bg-slate-800 p-4 rounded-lg mb-6">"Studies show that when ice cream sales go up, drowning deaths also increase. This proves that eating ice cream causes drowning!"</p>
+    
+    <!-- Chart showing correlation -->
+    <div class="bg-slate-800 p-4 rounded-lg mb-6">
+      <p class="text-sm text-slate-400 mb-4">Ice Cream Sales vs Drowning Deaths by Month</p>
+      <svg width="500" height="280" class="mx-auto block">
+        <!-- Y-axis left (Ice cream in kubicmeters) -->
+        <line x1="60" y1="30" x2="60" y2="220" stroke="#64748b" stroke-width="2"/>
+        <text x="55" y="35" fill="#3b82f6" font-size="10" text-anchor="end">320000</text>
+        <text x="55" y="70" fill="#3b82f6" font-size="10" text-anchor="end">300000</text>
+        <text x="55" y="105" fill="#3b82f6" font-size="10" text-anchor="end">280000</text>
+        <text x="55" y="140" fill="#3b82f6" font-size="10" text-anchor="end">260000</text>
+        <text x="55" y="175" fill="#3b82f6" font-size="10" text-anchor="end">240000</text>
+        <text x="55" y="210" fill="#3b82f6" font-size="10" text-anchor="end">220000</text>
+        <text x="15" y="130" fill="#3b82f6" font-size="10" text-anchor="middle" transform="rotate(-90, 15, 130)">Ice cream in kubicmeters</text>
+        
+        <!-- Y-axis right (Deaths by drowning) -->
+        <line x1="420" y1="30" x2="420" y2="220" stroke="#64748b" stroke-width="2"/>
+        <text x="430" y="35" fill="#ef4444" font-size="10" text-anchor="start">700</text>
+        <text x="430" y="70" fill="#ef4444" font-size="10" text-anchor="start">600</text>
+        <text x="430" y="105" fill="#ef4444" font-size="10" text-anchor="start">500</text>
+        <text x="430" y="140" fill="#ef4444" font-size="10" text-anchor="start">400</text>
+        <text x="430" y="175" fill="#ef4444" font-size="10" text-anchor="start">300</text>
+        <text x="430" y="210" fill="#ef4444" font-size="10" text-anchor="start">200</text>
+        <text x="470" y="130" fill="#ef4444" font-size="10" text-anchor="middle" transform="rotate(-90, 470, 130)">Deaths by drowning</text>
+        
+        <!-- X-axis -->
+        <line x1="60" y1="220" x2="420" y2="220" stroke="#64748b" stroke-width="2"/>
+        <text x="75" y="240" fill="#94a3b8" font-size="8" text-anchor="middle" transform="rotate(-45, 75, 240)">January</text>
+        <text x="105" y="240" fill="#94a3b8" font-size="8" text-anchor="middle" transform="rotate(-45, 105, 240)">February</text>
+        <text x="135" y="240" fill="#94a3b8" font-size="8" text-anchor="middle" transform="rotate(-45, 135, 240)">March</text>
+        <text x="165" y="240" fill="#94a3b8" font-size="8" text-anchor="middle" transform="rotate(-45, 165, 240)">April</text>
+        <text x="195" y="240" fill="#94a3b8" font-size="8" text-anchor="middle" transform="rotate(-45, 195, 240)">May</text>
+        <text x="225" y="240" fill="#94a3b8" font-size="8" text-anchor="middle" transform="rotate(-45, 225, 240)">June</text>
+        <text x="255" y="240" fill="#94a3b8" font-size="8" text-anchor="middle" transform="rotate(-45, 255, 240)">July</text>
+        <text x="285" y="240" fill="#94a3b8" font-size="8" text-anchor="middle" transform="rotate(-45, 285, 240)">August</text>
+        <text x="315" y="240" fill="#94a3b8" font-size="8" text-anchor="middle" transform="rotate(-45, 315, 240)">September</text>
+        <text x="345" y="240" fill="#94a3b8" font-size="8" text-anchor="middle" transform="rotate(-45, 345, 240)">October</text>
+        <text x="375" y="240" fill="#94a3b8" font-size="8" text-anchor="middle" transform="rotate(-45, 375, 240)">November</text>
+        <text x="405" y="240" fill="#94a3b8" font-size="8" text-anchor="middle" transform="rotate(-45, 405, 240)">December</text>
+        
+        <!-- Ice cream sales line (blue) - approximate values from chart -->
+        <polyline points="75,185 105,160 135,120 165,110 195,90 225,35 255,45 285,40 315,145 345,70 375,175 405,195" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5,3"/>
+        <!-- Blue dots -->
+        <polygon points="75,180 80,185 75,190 70,185" fill="#3b82f6"/>
+        <polygon points="105,155 110,160 105,165 100,160" fill="#3b82f6"/>
+        <polygon points="135,115 140,120 135,125 130,120" fill="#3b82f6"/>
+        <polygon points="165,105 170,110 165,115 160,110" fill="#3b82f6"/>
+        <polygon points="195,85 200,90 195,95 190,90" fill="#3b82f6"/>
+        <polygon points="225,30 230,35 225,40 220,35" fill="#3b82f6"/>
+        <polygon points="255,40 260,45 255,50 250,45" fill="#3b82f6"/>
+        <polygon points="285,35 290,40 285,45 280,40" fill="#3b82f6"/>
+        <polygon points="315,140 320,145 315,150 310,145" fill="#3b82f6"/>
+        <polygon points="345,65 350,70 345,75 340,70" fill="#3b82f6"/>
+        <polygon points="375,170 380,175 375,180 370,175" fill="#3b82f6"/>
+        <polygon points="405,190 410,195 405,200 400,195" fill="#3b82f6"/>
+        
+        <!-- Drowning deaths line (red) - approximate values from chart -->
+        <polyline points="75,200 105,210 135,180 165,165 195,135 225,80 255,35 285,95 315,150 345,170 375,205 405,210" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,3"/>
+        <!-- Red dots -->
+        <circle cx="75" cy="200" r="4" fill="#ef4444"/>
+        <circle cx="105" cy="210" r="4" fill="#ef4444"/>
+        <circle cx="135" cy="180" r="4" fill="#ef4444"/>
+        <circle cx="165" cy="165" r="4" fill="#ef4444"/>
+        <circle cx="195" cy="135" r="4" fill="#ef4444"/>
+        <circle cx="225" cy="80" r="4" fill="#ef4444"/>
+        <circle cx="255" cy="35" r="4" fill="#ef4444"/>
+        <circle cx="285" cy="95" r="4" fill="#ef4444"/>
+        <circle cx="315" cy="150" r="4" fill="#ef4444"/>
+        <circle cx="345" cy="170" r="4" fill="#ef4444"/>
+        <circle cx="375" cy="205" r="4" fill="#ef4444"/>
+        <circle cx="405" cy="210" r="4" fill="#ef4444"/>
+        
+        <!-- Legend -->
+        <line x1="320" y1="15" x2="340" y2="15" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5,3"/>
+        <polygon points="330,10 335,15 330,20 325,15" fill="#3b82f6"/>
+        <text x="345" y="18" fill="#3b82f6" font-size="10">Ice cream</text>
+        
+        <line x1="320" y1="28" x2="340" y2="28" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,3"/>
+        <circle cx="330" cy="28" r="3" fill="#ef4444"/>
+        <text x="345" y="31" fill="#ef4444" font-size="10">Drowning</text>
+      </svg>
+    </div>
+    
+    <!-- Scatter plot showing correlation -->
+    <div class="bg-slate-800 p-4 rounded-lg mb-6">
+      <p class="text-sm text-slate-400 mb-4">Correlation: Ice Cream Sales vs Drowning Deaths</p>
+      <svg width="500" height="320" class="mx-auto block">
+        <!-- Y-axis (Deaths by drowning) -->
+        <line x1="70" y1="30" x2="70" y2="270" stroke="#64748b" stroke-width="2"/>
+        <text x="60" y="35" fill="#94a3b8" font-size="10" text-anchor="end">700</text>
+        <text x="60" y="75" fill="#94a3b8" font-size="10" text-anchor="end">600</text>
+        <text x="60" y="115" fill="#94a3b8" font-size="10" text-anchor="end">500</text>
+        <text x="60" y="155" fill="#94a3b8" font-size="10" text-anchor="end">400</text>
+        <text x="60" y="195" fill="#94a3b8" font-size="10" text-anchor="end">300</text>
+        <text x="60" y="235" fill="#94a3b8" font-size="10" text-anchor="end">200</text>
+        <text x="60" y="270" fill="#94a3b8" font-size="10" text-anchor="end">100</text>
+        <text x="20" y="150" fill="#94a3b8" font-size="10" text-anchor="middle" transform="rotate(-90, 20, 150)">Deaths by drowning</text>
+        
+        <!-- X-axis (cubic meters of Ice cream) -->
+        <line x1="70" y1="270" x2="470" y2="270" stroke="#64748b" stroke-width="2"/>
+        <text x="70" y="285" fill="#94a3b8" font-size="9" text-anchor="middle">200000</text>
+        <text x="137" y="285" fill="#94a3b8" font-size="9" text-anchor="middle">220000</text>
+        <text x="204" y="285" fill="#94a3b8" font-size="9" text-anchor="middle">240000</text>
+        <text x="271" y="285" fill="#94a3b8" font-size="9" text-anchor="middle">260000</text>
+        <text x="338" y="285" fill="#94a3b8" font-size="9" text-anchor="middle">280000</text>
+        <text x="405" y="285" fill="#94a3b8" font-size="9" text-anchor="middle">300000</text>
+        <text x="470" y="285" fill="#94a3b8" font-size="9" text-anchor="middle">340000</text>
+        <text x="270" y="310" fill="#94a3b8" font-size="10" text-anchor="middle">cubic meters of Ice cream</text>
+        
+        <!-- Trend line (dashed blue) -->
+        <line x1="90" y1="260" x2="460" y2="30" stroke="#3b82f6" stroke-width="2" stroke-dasharray="8,4"/>
+        
+        <!-- Data points with month labels -->
+        <!-- December (yellow) -->
+        <circle cx="85" cy="235" r="6" fill="#eab308"/>
+        <text x="85" y="250" fill="#94a3b8" font-size="8" text-anchor="middle">December</text>
+        
+        <!-- November (yellow-green) -->
+        <circle cx="110" cy="230" r="6" fill="#a3e635"/>
+        <text x="110" y="245" fill="#94a3b8" font-size="8" text-anchor="middle">November</text>
+        
+        <!-- January (purple) -->
+        <circle cx="175" cy="215" r="6" fill="#8b5cf6"/>
+        <text x="175" y="205" fill="#94a3b8" font-size="8" text-anchor="middle">January</text>
+        
+        <!-- February (purple) -->
+        <circle cx="200" cy="225" r="6" fill="#7c3aed"/>
+        <text x="200" y="240" fill="#94a3b8" font-size="8" text-anchor="middle">February</text>
+        
+        <!-- September (green) -->
+        <circle cx="240" cy="170" r="6" fill="#22c55e"/>
+        <text x="240" y="160" fill="#94a3b8" font-size="8" text-anchor="middle">September</text>
+        
+        <!-- October (green) -->
+        <circle cx="275" cy="200" r="6" fill="#4ade80"/>
+        <text x="275" y="190" fill="#94a3b8" font-size="8" text-anchor="middle">October</text>
+        
+        <!-- March (blue) -->
+        <circle cx="310" cy="195" r="6" fill="#3b82f6"/>
+        <text x="310" y="210" fill="#94a3b8" font-size="8" text-anchor="middle">March</text>
+        
+        <!-- April (blue) -->
+        <circle cx="320" cy="185" r="6" fill="#2563eb"/>
+        <text x="335" y="180" fill="#94a3b8" font-size="8" text-anchor="middle">April</text>
+        
+        <!-- May (teal) -->
+        <circle cx="340" cy="145" r="6" fill="#14b8a6"/>
+        <text x="340" y="135" fill="#94a3b8" font-size="8" text-anchor="middle">May</text>
+        
+        <!-- August (green) -->
+        <circle cx="385" cy="105" r="6" fill="#22c55e"/>
+        <text x="400" y="100" fill="#94a3b8" font-size="8" text-anchor="middle">August</text>
+        
+        <!-- June (green) -->
+        <circle cx="405" cy="75" r="6" fill="#16a34a"/>
+        <text x="420" y="70" fill="#94a3b8" font-size="8" text-anchor="middle">June</text>
+        
+        <!-- July (green) -->
+        <circle cx="395" cy="45" r="6" fill="#15803d"/>
+        <text x="395" y="35" fill="#94a3b8" font-size="8" text-anchor="middle">July</text>
+      </svg>
+    </div>
+
+    <div id="answers" class="space-y-3">
+      <button class="w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left hover:border-cyan-400 hover:bg-slate-700 transition" data-answer="true">
+        <span class="answer-label text-green-400 font-bold text-lg">✓ TRUE</span>
+        <span class="text-slate-400 ml-2">This claim is accurate</span>
+      </button>
+      <button class="w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left hover:border-cyan-400 hover:bg-slate-700 transition" data-answer="false">
+        <span class="answer-label text-red-400 font-bold text-lg">✗ FALSE</span>
+        <span class="text-slate-400 ml-2">This claim is wrong</span>
+      </button>
+      <button class="w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left hover:border-cyan-400 hover:bg-slate-700 transition" data-answer="misleading">
+        <span class="answer-label text-amber-400 font-bold text-lg">⚠ MISLEADING</span>
+        <span class="text-slate-400 ml-2">Something's fishy</span>
+      </button>
+    </div>
+
+    <!-- Feedback (hidden by default) -->
+    <div id="feedback" class="mt-6 hidden">
+      <div id="feedback-box" class="p-4 rounded-lg">
+        <p id="feedback-text"></p>
+      </div>
+    </div>
+
+    <!-- Continue button (hidden until correct) -->
+    <div id="continue" class="mt-6 hidden">
+      <a href="scenario2-real.html" class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-6 py-3 rounded-lg inline-block">
+        Continue →
+      </a>
+    </div>
+  </div>
+
+  <script src="scenario2.js"></script>
+</body>
+</html>

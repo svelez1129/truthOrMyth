@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Truth or Myth?</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white min-h-screen p-8">
+
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-2xl font-bold mb-2">Poverty in the United States</h2>
+    <p class="text-slate-400 text-sm mb-4">Source: Our World in Data - World Bank, US Census Bureau (2024)</p>
+    <p class="bg-slate-800 p-4 rounded-lg mb-6">"About 11% of Americans live below the US national poverty line of $27.10 per day. This means roughly 11% of Americans also live in extreme poverty according to the UN's international definition of $3 per day."</p>
+    
+    <!-- Chart -->
+    <div class="bg-slate-800 p-4 rounded-lg mb-6">
+      <p class="text-sm text-slate-400 mb-2">National poverty line, poverty rate and incomes in the United States</p>
+      <p class="text-xs text-slate-500 mb-3">Distribution of household income, per capita. Income data from 2023.</p>
+      <svg width="500" height="300" class="mx-auto block">
+        
+        <!-- Country label -->
+        <text x="350" y="35" fill="#ffffff" font-size="14" font-weight="bold">United States</text>
+        
+        <!-- Income distribution curve (gray area) -->
+        <path d="M 40,220 
+                 C 60,220 80,219 100,218
+                 C 140,215 170,205 200,185
+                 C 230,160 260,120 300,70
+                 C 340,50 380,55 410,90
+                 C 440,130 460,180 475,220
+                 L 475,220 L 40,220 Z" 
+              fill="#4b5563"/>
+        
+        <!-- Shaded area below US poverty line (11% - gold/yellow) -->
+        <path d="M 40,220 
+                 C 60,220 80,219 100,218
+                 C 140,215 170,205 200,185
+                 C 215,172 225,160 232,150
+                 L 232,220 L 40,220 Z" 
+              fill="#ca8a04"/>
+        
+        <!-- $3 per day line (International Poverty Line - dashed red) -->
+        <line x1="65" y1="40" x2="65" y2="220" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,4"/>
+        
+        <!-- $27.10 per day line (US Poverty Line - solid yellow) -->
+        <line x1="232" y1="40" x2="232" y2="220" stroke="#eab308" stroke-width="2"/>
+        
+        <!-- 11% label -->
+        <text x="150" y="100" fill="#eab308" font-size="24" font-weight="bold">11%</text>
+        <text x="150" y="120" fill="#ffffff" font-size="12">United States</text>
+        
+        <!-- X-axis line -->
+        <line x1="40" y1="220" x2="475" y2="220" stroke="#64748b" stroke-width="1"/>
+        
+        <!-- X-axis labels -->
+        <text x="55" y="238" fill="#94a3b8" font-size="11" text-anchor="middle">$1</text>
+        <text x="110" y="238" fill="#94a3b8" font-size="11" text-anchor="middle">$5</text>
+        <text x="165" y="238" fill="#94a3b8" font-size="11" text-anchor="middle">$10</text>
+        <text x="232" y="238" fill="#94a3b8" font-size="11" text-anchor="middle">$20</text>
+        <text x="300" y="238" fill="#94a3b8" font-size="11" text-anchor="middle">$50</text>
+        <text x="380" y="238" fill="#94a3b8" font-size="11" text-anchor="middle">$100</text>
+        <text x="460" y="238" fill="#94a3b8" font-size="11" text-anchor="middle">$200</text>
+        
+        <!-- $3 per day label -->
+        <text x="65" y="258" fill="#ef4444" font-size="11" text-anchor="middle" font-weight="bold">$3 per day</text>
+        <text x="65" y="272" fill="#ef4444" font-size="9" text-anchor="middle">International</text>
+        <text x="65" y="284" fill="#ef4444" font-size="9" text-anchor="middle">Poverty Line</text>
+        
+        <!-- $27.10 per day label -->
+        <text x="232" y="258" fill="#eab308" font-size="11" text-anchor="middle" font-weight="bold">$27.10 per day</text>
+        <text x="232" y="272" fill="#eab308" font-size="9" text-anchor="middle">US Poverty Line</text>
+      </svg>
+      <p class="text-slate-500 text-xs mt-2">Data source: World Bank Poverty and Inequality Platform (2025); US Census Bureau (2024)</p>
+    </div>
+
+    <div id="answers" class="space-y-3">
+      <button class="w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left hover:border-cyan-400 hover:bg-slate-700 transition" data-answer="true">
+        <span class="answer-label text-green-400 font-bold text-lg">✓ TRUE</span>
+        <span class="text-slate-400 ml-2">This claim is accurate</span>
+      </button>
+      <button class="w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left hover:border-cyan-400 hover:bg-slate-700 transition" data-answer="false">
+        <span class="answer-label text-red-400 font-bold text-lg">✗ FALSE</span>
+        <span class="text-slate-400 ml-2">This claim is wrong</span>
+      </button>
+      <button class="w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left hover:border-cyan-400 hover:bg-slate-700 transition" data-answer="misleading">
+        <span class="answer-label text-amber-400 font-bold text-lg">⚠ MISLEADING</span>
+        <span class="text-slate-400 ml-2">Something's fishy</span>
+      </button>
+    </div>
+
+    <!-- Feedback (hidden by default) -->
+    <div id="feedback" class="mt-6 hidden">
+      <div id="feedback-box" class="p-4 rounded-lg">
+        <p id="feedback-text"></p>
+      </div>
+    </div>
+
+    <!-- Continue button (hidden until answered) -->
+    <div id="continue" class="mt-6 hidden">
+      <a href="scenario6-real.html" class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-6 py-3 rounded-lg inline-block">
+        Continue →
+      </a>
+    </div>
+  </div>
+
+  <script src="scenario6.js"></script>
+</body>
+</html>

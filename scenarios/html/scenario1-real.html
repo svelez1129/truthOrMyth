@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truth or Myth? - Real Data</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 text-white min-h-screen p-8">
+
+    <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl font-bold mb-4">📊 The Truncated Y-Axis Trick</h2>
+        <p class="text-slate-400 mb-6">This chart is from an actual Chevy advertisement. By starting the Y-axis at 95%
+            instead of 0%, they made tiny differences look enormous!</p>
+
+        <div class="bg-slate-800 p-4 rounded-lg mb-6">
+            <img src="../../assets/chevy.png" alt="Chevy truck reliability chart with misleading Y-axis" class="mx-auto rounded" />
+            <p class="text-slate-400 text-sm mt-4">Source: <a
+                    href="https://ecampusontario.pressbooks.pub/bio16610w18/chapter/how-graph-misrepresents-data/"
+                    class="text-cyan-400 hover:underline" target="_blank">Cases and Tools in Biotechnology Management -
+                    How Graphs Misrepresent Data</a></p>
+        </div>
+
+        <div class="bg-slate-800 p-4 rounded-lg mb-6 text-left">
+            <h3 class="font-bold text-cyan-400 mb-2">🧠 Key Lesson: Truncated Y-Axis</h3>
+            <p class="text-slate-300 mb-3">When a Y-axis doesn't start at zero, small differences can look massive.
+                Here's the reality:</p>
+            <ul class="text-slate-300 list-disc list-inside space-y-1 mb-3">
+                <li>Chevy: 98% still on road</li>
+                <li>Ford: ~97% still on road</li>
+                <li>Toyota: ~96% still on road</li>
+                <li>Nissan: ~95.5% still on road</li>
+            </ul>
+            <p class="text-slate-300">The actual difference between "best" and "worst" is only about <strong>2.5
+                    percentage points</strong> - but the chart makes Chevy look 10x more reliable! Always check where
+                the Y-axis starts.</p>
+        </div>
+
+        <a href="scenario2.html"
+            class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-6 py-3 rounded-lg inline-block">
+            Continue
+        </a>
+    </div>
+
+</body>
+
+</html>

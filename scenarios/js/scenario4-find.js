@@ -20,22 +20,22 @@ document.querySelectorAll('[data-option]').forEach(function(option) {
     var feedbackBox = document.getElementById('feedback-box');
     var feedbackText = document.getElementById('feedback-text');
     
-    // Highlight correct answer in green
+    // Highlight correct answer in green (stroke only)
     var correctEl = document.getElementById('visual-' + correctAnswer);
     if (correctEl) {
-      correctEl.setAttribute('fill', '#166534');
       correctEl.setAttribute('stroke', '#22c55e');
+      correctEl.setAttribute('stroke-width', '3');
     }
     
     if (isCorrect) {
       feedbackBox.className = 'p-4 rounded-lg bg-green-900 border border-green-500';
       feedbackText.textContent = 'Correct! Using a pie chart is misleading here. Pie charts are meant to show parts of a whole that add up to 100%, but this data adds up to 271% because respondents could pick three favorites. A bar chart would be more appropriate.';
     } else {
-      // Highlight wrong answer in red
+      // Highlight wrong answer in red (stroke only)
       var wrongEl = document.getElementById('visual-' + selected);
       if (wrongEl) {
-        wrongEl.setAttribute('fill', '#7f1d1d');
         wrongEl.setAttribute('stroke', '#ef4444');
+        wrongEl.setAttribute('stroke-width', '3');
       }
       
       feedbackBox.className = 'p-4 rounded-lg bg-red-900 border border-red-500';
@@ -58,19 +58,19 @@ if (previousAnswer) {
     opt.style.pointerEvents = 'none';
   });
   
-  // Highlight correct answer in green
+  // Highlight correct answer in green (stroke only)
   var correctEl = document.getElementById('visual-' + correctAnswer);
   if (correctEl) {
-    correctEl.setAttribute('fill', '#166534');
     correctEl.setAttribute('stroke', '#22c55e');
+    correctEl.setAttribute('stroke-width', '3');
   }
   
-  // If wrong, also highlight the wrong answer in red
+  // If wrong, also highlight the wrong answer in red (stroke only)
   if (!isCorrect) {
     var wrongEl = document.getElementById('visual-' + selected);
     if (wrongEl) {
-      wrongEl.setAttribute('fill', '#7f1d1d');
       wrongEl.setAttribute('stroke', '#ef4444');
+      wrongEl.setAttribute('stroke-width', '3');
     }
   }
   

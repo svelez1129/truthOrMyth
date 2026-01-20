@@ -20,22 +20,22 @@ document.querySelectorAll('[data-option]').forEach(function(option) {
     var feedbackBox = document.getElementById('feedback-box');
     var feedbackText = document.getElementById('feedback-text');
     
-    // Highlight correct answer in green
+    // Highlight correct answer in green (stroke only)
     var correctEl = document.getElementById('visual-' + correctAnswer);
     if (correctEl) {
-      correctEl.setAttribute('fill', '#166534');
       correctEl.setAttribute('stroke', '#22c55e');
+      correctEl.setAttribute('stroke-width', '3');
     }
     
     if (isCorrect) {
       feedbackBox.className = 'p-4 rounded-lg bg-green-900 border border-green-500';
       feedbackText.textContent = 'Correct! The Y-axis starts at 318,000 instead of 0. This makes the increase from ~323,000 to ~333,000 look dramatic, when it\'s actually only about a 3% increase. If the Y-axis started at 0, the line would appear almost flat.';
     } else {
-      // Highlight wrong answer in red
+      // Highlight wrong answer in red (stroke only)
       var wrongEl = document.getElementById('visual-' + selected);
       if (wrongEl) {
-        wrongEl.setAttribute('fill', '#7f1d1d');
         wrongEl.setAttribute('stroke', '#ef4444');
+        wrongEl.setAttribute('stroke-width', '3');
       }
       
       feedbackBox.className = 'p-4 rounded-lg bg-red-900 border border-red-500';
@@ -58,19 +58,19 @@ if (previousAnswer) {
     opt.style.pointerEvents = 'none';
   });
   
-  // Highlight correct answer in green
+  // Highlight correct answer in green (stroke only)
   var correctEl = document.getElementById('visual-' + correctAnswer);
   if (correctEl) {
-    correctEl.setAttribute('fill', '#166534');
     correctEl.setAttribute('stroke', '#22c55e');
+    correctEl.setAttribute('stroke-width', '3');
   }
   
-  // If wrong, also highlight the wrong answer in red
+  // If wrong, also highlight the wrong answer in red (stroke only)
   if (!isCorrect) {
     var wrongEl = document.getElementById('visual-' + selected);
     if (wrongEl) {
-      wrongEl.setAttribute('fill', '#7f1d1d');
       wrongEl.setAttribute('stroke', '#ef4444');
+      wrongEl.setAttribute('stroke-width', '3');
     }
   }
   

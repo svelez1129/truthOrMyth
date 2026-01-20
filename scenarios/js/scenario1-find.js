@@ -17,12 +17,12 @@ document.querySelectorAll('rect[data-option]').forEach(function(option) {
       opt.setAttribute('onmouseleave', '');
     });
     
-    // Reset all visual boxes to default
+    // Remove all visual boxes (make them invisible)
     ['A', 'B', 'C', 'D'].forEach(function(letter) {
       var el = document.getElementById('visual-' + letter);
       if (el) {
         el.setAttribute('fill', 'transparent');
-        el.setAttribute('stroke', '#06b6d4');
+        el.setAttribute('stroke', 'transparent');
       }
     });
     
@@ -63,12 +63,12 @@ if (previousAnswer) {
     opt.setAttribute('onmouseleave', '');
   });
   
-  // Reset all visual boxes to default
+  // Remove all visual boxes (make them invisible)
   ['A', 'B', 'C', 'D'].forEach(function(letter) {
     var el = document.getElementById('visual-' + letter);
     if (el) {
       el.setAttribute('fill', 'transparent');
-      el.setAttribute('stroke', '#06b6d4');
+      el.setAttribute('stroke', 'transparent');
     }
   });
   

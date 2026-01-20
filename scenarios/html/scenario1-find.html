@@ -26,13 +26,13 @@
     <div class="bg-slate-800 p-6 rounded-lg">
       <p class="text-sm text-slate-400 mb-4">Percentage of trucks still on the road after 10 years</p>
       <svg width="500" height="300" class="mx-auto block">
-        <!-- Y-axis (starts at 95%, not 0!) - Option A -->
+        <!-- Visual highlight boxes (drawn first, behind everything) -->
         <rect id="visual-A" x="20" y="20" width="60" height="220" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="2" />
-        <!-- Hit Area A (Larger) -->
-        <rect data-option="A" x="0" y="0" width="100" height="260" fill="transparent" class="cursor-pointer"
-              onmouseenter="document.getElementById('visual-A').setAttribute('fill', '#164e63')" 
-              onmouseleave="document.getElementById('visual-A').setAttribute('fill', 'rgba(6,182,212,0.1)')" />
-        <text x="50" y="260" fill="#06b6d4" font-size="16" font-weight="bold" text-anchor="middle">A</text>
+        <rect id="visual-B" x="100" y="70" width="70" height="170" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="2" />
+        <rect id="visual-C" x="190" y="120" width="70" height="120" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="2" />
+        <rect id="visual-D" x="280" y="170" width="70" height="70" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="2" />
+
+        <!-- Y-axis line and labels -->
         <line x1="80" y1="30" x2="80" y2="240" stroke="#64748b" stroke-width="2" />
         <text x="70" y="40" fill="#94a3b8" font-size="12" text-anchor="end">100%</text>
         <text x="70" y="92" fill="#94a3b8" font-size="12" text-anchor="end">98%</text>
@@ -42,39 +42,31 @@
         <!-- X-axis -->
         <line x1="80" y1="240" x2="460" y2="240" stroke="#64748b" stroke-width="2" />
 
-        <!-- Chevy Bar - Option B -->
-        <rect id="visual-B" x="100" y="70" width="70" height="170" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="2" />
-        <!-- Hit Area B (Larger) -->
-        <rect data-option="B" x="90" y="60" width="90" height="190" fill="transparent" class="cursor-pointer"
+        <!-- Blue data bars -->
+        <rect x="110" y="92" width="50" height="148" fill="#3b82f6" />
+        <rect x="200" y="145" width="50" height="95" fill="#3b82f6" />
+        <rect x="290" y="197" width="50" height="43" fill="#3b82f6" />
+        <rect x="380" y="218" width="50" height="22" fill="#3b82f6" />
+
+        <!-- X-axis labels -->
+        <text x="135" y="260" fill="#94a3b8" font-size="12" text-anchor="middle">Chevy</text>
+        <text x="225" y="260" fill="#94a3b8" font-size="12" text-anchor="middle">Ford</text>
+        <text x="315" y="260" fill="#94a3b8" font-size="12" text-anchor="middle">Toyota</text>
+        <text x="405" y="260" fill="#94a3b8" font-size="12" text-anchor="middle">Nissan</text>
+
+        <!-- Invisible clickable hit areas (drawn last, on top) -->
+        <rect data-option="A" x="20" y="20" width="60" height="220" fill="transparent" class="cursor-pointer"
+              onmouseenter="document.getElementById('visual-A').setAttribute('fill', '#164e63')" 
+              onmouseleave="document.getElementById('visual-A').setAttribute('fill', 'rgba(6,182,212,0.1)')" />
+        <rect data-option="B" x="100" y="70" width="70" height="170" fill="transparent" class="cursor-pointer"
               onmouseenter="document.getElementById('visual-B').setAttribute('fill', '#164e63')" 
               onmouseleave="document.getElementById('visual-B').setAttribute('fill', 'rgba(6,182,212,0.1)')" />
-        <rect x="110" y="92" width="50" height="148" fill="#3b82f6" />
-        <text x="135" y="280" fill="#06b6d4" font-size="16" font-weight="bold" text-anchor="middle">B</text>
-        <text x="135" y="260" fill="#94a3b8" font-size="12" text-anchor="middle">Chevy</text>
-
-        <!-- Ford Bar - Option C -->
-        <rect id="visual-C" x="190" y="120" width="70" height="120" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="2" />
-        <!-- Hit Area C (Larger) -->
-        <rect data-option="C" x="180" y="110" width="90" height="140" fill="transparent" class="cursor-pointer"
+        <rect data-option="C" x="190" y="120" width="70" height="120" fill="transparent" class="cursor-pointer"
               onmouseenter="document.getElementById('visual-C').setAttribute('fill', '#164e63')" 
               onmouseleave="document.getElementById('visual-C').setAttribute('fill', 'rgba(6,182,212,0.1)')" />
-        <rect x="200" y="145" width="50" height="95" fill="#3b82f6" />
-        <text x="225" y="280" fill="#06b6d4" font-size="16" font-weight="bold" text-anchor="middle">C</text>
-        <text x="225" y="260" fill="#94a3b8" font-size="12" text-anchor="middle">Ford</text>
-
-        <!-- Toyota Bar - Option D -->
-        <rect id="visual-D" x="280" y="170" width="70" height="70" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" stroke-width="2" />
-        <!-- Hit Area D (Larger) -->
-        <rect data-option="D" x="270" y="160" width="90" height="90" fill="transparent" class="cursor-pointer"
+        <rect data-option="D" x="280" y="170" width="70" height="70" fill="transparent" class="cursor-pointer"
               onmouseenter="document.getElementById('visual-D').setAttribute('fill', '#164e63')" 
               onmouseleave="document.getElementById('visual-D').setAttribute('fill', 'rgba(6,182,212,0.1)')" />
-        <rect x="290" y="197" width="50" height="43" fill="#3b82f6" />
-        <text x="315" y="280" fill="#06b6d4" font-size="16" font-weight="bold" text-anchor="middle">D</text>
-        <text x="315" y="260" fill="#94a3b8" font-size="12" text-anchor="middle">Toyota</text>
-
-        <!-- Nissan Bar -->
-        <rect x="380" y="218" width="50" height="22" fill="#3b82f6" />
-        <text x="405" y="260" fill="#94a3b8" font-size="12" text-anchor="middle">Nissan</text>
       </svg>
     </div>
 

@@ -1,4 +1,4 @@
-// Scenario 4 - Pie Chart with percentages over 100% - Answer is MISLEADING
+// Scenario 4 - Pie Chart with percentages over 100% - Answer is MISLEADING - NO FEEDBACK
 const correctAnswer = "misleading";
 const scenarioId = "scenario4";
 
@@ -7,8 +7,8 @@ document.querySelectorAll('button[data-answer]').forEach(function(button) {
     const selected = this.getAttribute('data-answer');
     const isCorrect = selected === correctAnswer;
     
-    // Record the answer
-    ScoreTracker.recordAnswer(scenarioId, isCorrect);
+    // Record the answer (includes selected answer)
+    ScoreTracker.recordAnswer(scenarioId, isCorrect, selected);
     
     // Change all labels to white and disable buttons
     document.querySelectorAll('button[data-answer]').forEach(function(btn) {
@@ -22,34 +22,50 @@ document.querySelectorAll('button[data-answer]').forEach(function(button) {
     // Highlight clicked button
     this.classList.remove('opacity-50');
     
-    // Show feedback
-    document.getElementById('feedback').classList.remove('hidden');
-    var feedbackBox = document.getElementById('feedback-box');
-    var feedbackText = document.getElementById('feedback-text');
-    
-    // Get continue link - always goes to find page for misleading scenarios
-    var continueLink = document.querySelector('#continue a');
-    continueLink.href = 'scenario4-find.html';
-    
     if (isCorrect) {
       this.classList.add('border-green-500', 'bg-green-900');
-      feedbackBox.className = 'p-6 rounded-lg mb-4 bg-green-900 border border-green-500';
-      feedbackText.textContent = "Correct! This is MISLEADING. Pie charts should only be used when percentages add up to 100%. This data represents multiple selections, so the percentages exceed 100%. Let's find the problem!";
     } else {
       this.classList.add('border-red-500', 'bg-red-900');
-      feedbackBox.className = 'p-6 rounded-lg mb-4 bg-red-900 border border-red-500';
-      
       // Highlight the correct answer
       document.querySelector('button[data-answer="' + correctAnswer + '"]').classList.remove('opacity-50');
       document.querySelector('button[data-answer="' + correctAnswer + '"]').classList.add('border-green-500', 'bg-green-900');
-      
-      if (selected === "true") {
-        feedbackText.textContent = "Not quite! While the percentages shown are accurate, using a pie chart is MISLEADING. Pie charts should show parts of a whole that add up to 100%. This data represents multiple selections from respondents, so the percentages exceed 100%. A bar chart would be more appropriate.";
-      } else if (selected === "false") {
-        feedbackText.textContent = "Not quite! The data itself isn't false - the percentages are accurate. However, it's MISLEADING because pie charts should only show data that adds up to 100%. Since respondents could pick multiple favorites, the percentages exceed 100%. A bar chart would be more appropriate.";
-      }
     }
     
+    // No feedback for scenario4 - just show continue
     document.getElementById('continue').classList.remove('hidden');
   });
 });
+
+// On page load, check if already answered and restore state
+var previousAnswer = ScoreTracker.getAnswer(scenarioId);
+if (previousAnswer) {
+  var selected = previousAnswer.selected;
+  var isCorrect = previousAnswer.correct;
+  
+  // Disable all buttons and reset styles
+  document.querySelectorAll('button[data-answer]').forEach(function(btn) {
+    btn.disabled = true;
+    btn.classList.remove('hover:border-cyan-400', 'hover:bg-slate-700');
+    btn.classList.add('opacity-50');
+    btn.querySelector('.answer-label').classList.remove('text-green-400', 'text-red-400', 'text-amber-400');
+    btn.querySelector('.answer-label').classList.add('text-white');
+  });
+  
+  // Highlight the previously selected button
+  var selectedBtn = document.querySelector('button[data-answer="' + selected + '"]');
+  if (selectedBtn) {
+    selectedBtn.classList.remove('opacity-50');
+    if (isCorrect) {
+      selectedBtn.classList.add('border-green-500', 'bg-green-900');
+    } else {
+      selectedBtn.classList.add('border-red-500', 'bg-red-900');
+      // Also highlight correct answer
+      var correctBtn = document.querySelector('button[data-answer="' + correctAnswer + '"]');
+      correctBtn.classList.remove('opacity-50');
+      correctBtn.classList.add('border-green-500', 'bg-green-900');
+    }
+  }
+  
+  // Show continue button (no feedback)
+  document.getElementById('continue').classList.remove('hidden');
+}

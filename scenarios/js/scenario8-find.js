@@ -1,10 +1,14 @@
 const correctAnswer = "A";
+const scenarioId = "scenario8-find";
 
 document.querySelectorAll('[data-option]').forEach(function(option) {
   option.addEventListener('click', function() {
     const selected = this.getAttribute('data-option');
+    const isCorrect = selected === correctAnswer;
+    // Record the answer
+    ScoreTracker.recordAnswer(scenarioId, isCorrect);
     
-    if (selected === correctAnswer) {
+    if (isCorrect) {
       // Correct - show explanation and continue
       document.getElementById('feedback').classList.remove('hidden');
       document.getElementById('feedback-box').className = 'p-4 rounded-lg bg-green-900 border border-green-500';

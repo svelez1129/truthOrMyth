@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Truth or Myth? - Your Results</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/score.js"></script>
+</head>
+
+<body class="bg-slate-900 text-white min-h-screen p-8">
+
+  <div class="max-w-2xl mx-auto text-center">
+    <h1 class="text-4xl font-bold mb-2">🎉 Game Complete!</h1>
+    <p class="text-slate-400 mb-8">Here's how you did at spotting misleading data</p>
+
+    <!-- Score Display -->
+    <div class="bg-slate-800 p-8 rounded-lg mb-8">
+      <div class="text-6xl font-bold mb-2">
+        <span id="correct-count">0</span>/<span id="total-possible">14</span>
+      </div>
+      <p class="text-slate-400 text-lg">Questions Correct</p>
+      
+      <!-- Progress Bar -->
+      <div class="mt-6 bg-slate-700 rounded-full h-4 overflow-hidden">
+        <div id="score-bar" class="h-full bg-gradient-to-r from-cyan-500 to-green-500 transition-all duration-1000" style="width: 0%"></div>
+      </div>
+      
+      <!-- Percentage -->
+      <p class="mt-4 text-2xl font-semibold">
+        <span id="percentage">0</span>%
+      </p>
+    </div>
+
+    <!-- Performance Message -->
+    <div id="performance-message" class="bg-slate-800 p-6 rounded-lg mb-8">
+      <!-- Filled by JavaScript -->
+    </div>
+
+    <!-- Key Takeaways -->
+    <div class="bg-slate-800 p-6 rounded-lg mb-8 text-left">
+      <h3 class="font-bold text-cyan-400 mb-4 text-center">🧠 Key Takeaways</h3>
+      <ul class="text-slate-300 space-y-3">
+        <li class="flex items-start">
+          <span class="text-cyan-400 mr-2">✓</span>
+          <span><strong>Check the Y-axis</strong> - Does it start at zero? Truncated axes exaggerate differences.</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-cyan-400 mr-2">✓</span>
+          <span><strong>Verify the source</strong> - Is it from a reputable, unbiased organization?</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-cyan-400 mr-2">✓</span>
+          <span><strong>Look for cherry-picking</strong> - Is the timeframe or data selection suspicious?</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-cyan-400 mr-2">✓</span>
+          <span><strong>Question the visual</strong> - Does the chart type match the data being shown?</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-cyan-400 mr-2">✓</span>
+          <span><strong>Consider context</strong> - Is important comparison data missing?</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Play Again Button -->
+    <button onclick="playAgain()" class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-8 py-4 rounded-lg text-lg transition">
+      🔄 Play Again
+    </button>
+  </div>
+
+  <script>
+    // Get score data
+    const score = ScoreTracker.getScore();
+    const correct = score.correct;
+    const total = score.maxPossible;
+    const percentage = Math.round((correct / total) * 100);
+
+    // Update display
+    document.getElementById('correct-count').textContent = correct;
+    document.getElementById('total-possible').textContent = total;
+    document.getElementById('percentage').textContent = percentage;
+
+    // Animate progress bar
+    setTimeout(function() {
+      document.getElementById('score-bar').style.width = percentage + '%';
+    }, 100);
+
+    // Performance message based on score
+    const messageBox = document.getElementById('performance-message');
+    let emoji, title, message, bgClass;
+
+    if (percentage >= 90) {
+      emoji = "🏆";
+      title = "Data Detective Master!";
+      message = "Incredible! You have an eagle eye for misleading data. You're practically immune to statistical manipulation!";
+      bgClass = "bg-gradient-to-r from-yellow-900 to-amber-900 border border-yellow-500";
+    } else if (percentage >= 70) {
+      emoji = "🌟";
+      title = "Sharp Data Analyst!";
+      message = "Great job! You caught most of the tricks. With a bit more practice, you'll be unstoppable!";
+      bgClass = "bg-gradient-to-r from-green-900 to-emerald-900 border border-green-500";
+    } else if (percentage >= 50) {
+      emoji = "📊";
+      title = "Growing Data Skeptic!";
+      message = "Good effort! You're developing a healthy skepticism. Review the tricky ones and try again!";
+      bgClass = "bg-gradient-to-r from-blue-900 to-cyan-900 border border-blue-500";
+    } else {
+      emoji = "📚";
+      title = "Keep Learning!";
+      message = "Misleading data can be tricky! Don't worry - play again and you'll start noticing the patterns.";
+      bgClass = "bg-gradient-to-r from-slate-700 to-slate-800 border border-slate-500";
+    }
+
+    messageBox.className = "p-6 rounded-lg mb-8 " + bgClass;
+    messageBox.innerHTML = `
+      <div class="text-4xl mb-2">${emoji}</div>
+      <h3 class="text-xl font-bold mb-2">${title}</h3>
+      <p class="text-slate-300">${message}</p>
+    `;
+
+    // Play again function
+    function playAgain() {
+      ScoreTracker.resetScore();
+      window.location.href = '../../index.html'; 
+    }
+  </script>
+
+</body>
+
+</html>

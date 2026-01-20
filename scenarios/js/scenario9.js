@@ -1,9 +1,12 @@
 const correctAnswer = "false";
+const scenarioId = "scenario9";
 
 document.querySelectorAll('button[data-answer]').forEach(function(button) {
   button.addEventListener('click', function() {
     const selected = this.getAttribute('data-answer');
     const isCorrect = selected === correctAnswer;
+    // Record the answer
+    ScoreTracker.recordAnswer(scenarioId, isCorrect);
     
     // Change all labels to white and disable buttons
     document.querySelectorAll('button[data-answer]').forEach(function(btn) {

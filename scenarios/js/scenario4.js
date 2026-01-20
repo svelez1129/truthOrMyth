@@ -1,9 +1,14 @@
+// Scenario 4 - Pie Chart with percentages over 100% - Answer is MISLEADING
 const correctAnswer = "misleading";
+const scenarioId = "scenario4";
 
 document.querySelectorAll('button[data-answer]').forEach(function(button) {
   button.addEventListener('click', function() {
     const selected = this.getAttribute('data-answer');
     const isCorrect = selected === correctAnswer;
+    
+    // Record the answer
+    ScoreTracker.recordAnswer(scenarioId, isCorrect);
     
     // Change all labels to white and disable buttons
     document.querySelectorAll('button[data-answer]').forEach(function(btn) {
@@ -17,28 +22,34 @@ document.querySelectorAll('button[data-answer]').forEach(function(button) {
     // Highlight clicked button
     this.classList.remove('opacity-50');
     
+    // Show feedback
+    document.getElementById('feedback').classList.remove('hidden');
+    var feedbackBox = document.getElementById('feedback-box');
+    var feedbackText = document.getElementById('feedback-text');
+    
+    // Get continue link - always goes to find page for misleading scenarios
+    var continueLink = document.querySelector('#continue a');
+    continueLink.href = 'scenario4-find.html';
+    
     if (isCorrect) {
       this.classList.add('border-green-500', 'bg-green-900');
-      // Show continue button without feedback explanation
-      document.getElementById('continue').style.display = 'block';
+      feedbackBox.className = 'p-6 rounded-lg mb-4 bg-green-900 border border-green-500';
+      feedbackText.textContent = "Correct! This is MISLEADING. Pie charts should only be used when percentages add up to 100%. This data represents multiple selections, so the percentages exceed 100%. Let's find the problem!";
     } else {
       this.classList.add('border-red-500', 'bg-red-900');
-      // Also highlight the correct answer
+      feedbackBox.className = 'p-6 rounded-lg mb-4 bg-red-900 border border-red-500';
+      
+      // Highlight the correct answer
       document.querySelector('button[data-answer="' + correctAnswer + '"]').classList.remove('opacity-50');
       document.querySelector('button[data-answer="' + correctAnswer + '"]').classList.add('border-green-500', 'bg-green-900');
       
-      // Show feedback only for wrong answers
-      document.getElementById('feedback').style.display = 'block';
-      var feedbackBox = document.getElementById('feedback-box');
-      var feedbackText = document.getElementById('feedback-text');
-      feedbackBox.className = 'p-4 rounded-lg bg-red-900 border border-red-500';
-      
       if (selected === "true") {
-        feedbackText.textContent = 'Wrong! The correct answer is MISLEADING. While the percentages shown are accurate, using a pie chart is misleading because pie charts are designed to show parts of a whole that add up to 100%. However, this data represents multiple selections from respondents (they could pick three favorites), so the percentages add up to more than 100%. A bar chart or other visualization would be more appropriate for this type of data.';
+        feedbackText.textContent = "Not quite! While the percentages shown are accurate, using a pie chart is MISLEADING. Pie charts should show parts of a whole that add up to 100%. This data represents multiple selections from respondents, so the percentages exceed 100%. A bar chart would be more appropriate.";
       } else if (selected === "false") {
-        feedbackText.textContent = 'Wrong! The correct answer is MISLEADING. The data itself is not false - the percentages are accurate. However, using a pie chart is misleading because pie charts are designed to show parts of a whole that add up to 100%. Since this data represents multiple selections from respondents (they could pick three favorites), the percentages add up to more than 100%. A bar chart or other visualization would be more appropriate for this type of data.';
+        feedbackText.textContent = "Not quite! The data itself isn't false - the percentages are accurate. However, it's MISLEADING because pie charts should only show data that adds up to 100%. Since respondents could pick multiple favorites, the percentages exceed 100%. A bar chart would be more appropriate.";
       }
-      document.getElementById('continue').style.display = 'block';
     }
+    
+    document.getElementById('continue').classList.remove('hidden');
   });
 });

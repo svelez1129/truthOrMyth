@@ -1,4 +1,5 @@
 const correctAnswer = "misleading";
+const scenarioId = "scenario7";
 
 document.querySelectorAll('button[data-answer]').forEach(function (button) {
   button.addEventListener('click', function () {
@@ -13,7 +14,11 @@ document.querySelectorAll('button[data-answer]').forEach(function (button) {
       btn.querySelector('.answer-label').classList.add('text-white');
     });
 
-    if (selected === correctAnswer) {
+    const isCorrect = selected === correctAnswer;
+    // Record the answer
+    ScoreTracker.recordAnswer(scenarioId, isCorrect);
+
+    if (isCorrect) {
       // Correct answer logic
       this.classList.remove('opacity-50');
       this.classList.add('border-green-500', 'bg-green-900');

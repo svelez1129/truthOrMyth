@@ -7,7 +7,6 @@
   <title>Truth or Myth?</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<script src="game.js"></script>
 
 <body class="bg-slate-900 text-white min-h-screen">
 
@@ -18,16 +17,35 @@
         <span class="text-cyan-400">Truth</span> or <span class="text-amber-400">Myth</span>?
       </h1>
       <p class="text-slate-400 mb-8">Can you spot misleading data?</p>
-      <a href="scenarios/html/scenario1.html"
-        class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-6 py-3 rounded-lg inline-block mb-8">
-        Start Game
-      </a>
+      
+      <!-- Buttons container -->
+      <div id="buttons" class="space-y-4 mb-8">
+        <!-- Continue button (hidden by default) -->
+        <div id="continue-section" class="hidden">
+          <a id="continue-btn" href="#"
+            class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-6 py-3 rounded-lg inline-block w-48">
+            Continue
+          </a>
+          <p id="progress-text" class="text-slate-500 text-sm mt-2"></p>
+        </div>
+        
+        <!-- New Game / Start Game button -->
+        <div>
+          <a id="start-btn" href="scenarios/html/scenario1.html"
+            class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-6 py-3 rounded-lg inline-block w-48">
+            Start Game
+          </a>
+        </div>
+      </div>
+      
       <div class="text-slate-500 text-sm">
         Created by <a href="https://github.com/svelez1129" target="_blank"
           class="text-cyan-600 hover:text-cyan-400 transition-colors">@svelez1129</a>
       </div>
     </div>
   </div>
+
+  <script src="scenarios/js/index.js"></script>
 
 </body>
 

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Truth or Myth?</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/buttons.css">
 </head>
 <body class="bg-slate-900 text-white min-h-screen p-8">
 
@@ -122,15 +123,15 @@
     </script>
 
     <div id="answers" class="space-y-3">
-      <button class="w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left hover:border-cyan-400 hover:bg-slate-700 transition" data-answer="true">
+      <button class="answer-btn w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left" data-answer="true">
         <span class="answer-label text-green-400 font-bold text-lg">✓ TRUE</span>
         <span class="text-slate-400 ml-2">This claim is accurate</span>
       </button>
-      <button class="w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left hover:border-cyan-400 hover:bg-slate-700 transition" data-answer="false">
+      <button class="answer-btn w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left" data-answer="false">
         <span class="answer-label text-red-400 font-bold text-lg">✗ FALSE</span>
         <span class="text-slate-400 ml-2">This claim is wrong</span>
       </button>
-      <button class="w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left hover:border-cyan-400 hover:bg-slate-700 transition" data-answer="misleading">
+      <button class="answer-btn w-full p-4 bg-slate-800 border-2 border-slate-600 rounded-lg text-left" data-answer="misleading">
         <span class="answer-label text-amber-400 font-bold text-lg">⚠ MISLEADING</span>
         <span class="text-slate-400 ml-2">Something's fishy</span>
       </button>

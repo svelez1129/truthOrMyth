@@ -15,13 +15,13 @@ document.querySelectorAll('button[data-answer]').forEach(function(button) {
     document.querySelectorAll('button[data-answer]').forEach(function(btn) {
       btn.disabled = true;
       btn.classList.remove('hover:border-cyan-400', 'hover:bg-slate-700');
-      btn.classList.add('opacity-50');
+      btn.classList.add('disabled');
       btn.querySelector('.answer-label').classList.remove('text-green-400', 'text-red-400', 'text-amber-400');
       btn.querySelector('.answer-label').classList.add('text-white');
     });
     
     // Highlight clicked button
-    this.classList.remove('opacity-50');
+    this.classList.remove('disabled');
     
     // Show feedback
     document.getElementById('feedback').classList.remove('hidden');
@@ -41,7 +41,7 @@ document.querySelectorAll('button[data-answer]').forEach(function(button) {
       feedbackBox.className = 'p-6 rounded-lg mb-4 bg-red-900 border border-red-500';
       
       // Highlight the correct answer
-      document.querySelector('button[data-answer="' + correctAnswer + '"]').classList.remove('opacity-50');
+      document.querySelector('button[data-answer="' + correctAnswer + '"]').classList.remove('disabled');
       document.querySelector('button[data-answer="' + correctAnswer + '"]').classList.add('border-green-500', 'bg-green-900');
       
       if (selected === "true") {
@@ -65,7 +65,7 @@ if (previousAnswer) {
   document.querySelectorAll('button[data-answer]').forEach(function(btn) {
     btn.disabled = true;
     btn.classList.remove('hover:border-cyan-400', 'hover:bg-slate-700');
-    btn.classList.add('opacity-50');
+    btn.classList.add('disabled');
     btn.querySelector('.answer-label').classList.remove('text-green-400', 'text-red-400', 'text-amber-400');
     btn.querySelector('.answer-label').classList.add('text-white');
   });
@@ -73,14 +73,14 @@ if (previousAnswer) {
   // Highlight the previously selected button
   var selectedBtn = document.querySelector('button[data-answer="' + selected + '"]');
   if (selectedBtn) {
-    selectedBtn.classList.remove('opacity-50');
+    selectedBtn.classList.remove('disabled');
     if (isCorrect) {
       selectedBtn.classList.add('border-green-500', 'bg-green-900');
     } else {
       selectedBtn.classList.add('border-red-500', 'bg-red-900');
       // Also highlight correct answer
       var correctBtn = document.querySelector('button[data-answer="' + correctAnswer + '"]');
-      correctBtn.classList.remove('opacity-50');
+      correctBtn.classList.remove('disabled');
       correctBtn.classList.add('border-green-500', 'bg-green-900');
     }
   }

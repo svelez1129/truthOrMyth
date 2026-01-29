@@ -1,0 +1,145 @@
+/* Enhanced MCQ Button Styles for Truth or Myth */
+
+/* Base answer button styling */
+.answer-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border-left-width: 4px;
+}
+
+/* Left border accent colors */
+.answer-btn[data-answer="true"] {
+  border-left-color: #22c55e;
+}
+
+.answer-btn[data-answer="false"] {
+  border-left-color: #ef4444;
+}
+
+.answer-btn[data-answer="misleading"] {
+  border-left-color: #f59e0b;
+}
+
+/* Hover effects */
+.answer-btn:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.answer-btn[data-answer="true"]:hover {
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.15) 0%, rgba(30, 41, 59, 1) 100%);
+  border-color: #22c55e;
+}
+
+.answer-btn[data-answer="false"]:hover {
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.15) 0%, rgba(30, 41, 59, 1) 100%);
+  border-color: #ef4444;
+}
+
+.answer-btn[data-answer="misleading"]:hover {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.15) 0%, rgba(30, 41, 59, 1) 100%);
+  border-color: #f59e0b;
+}
+
+/* Active/pressed state */
+.answer-btn:active {
+  transform: translateX(2px) scale(0.98);
+}
+
+/* Focus state for accessibility */
+.answer-btn:focus {
+  outline: none;
+  ring: 2px;
+}
+
+.answer-btn[data-answer="true"]:focus {
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.4);
+}
+
+.answer-btn[data-answer="false"]:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.4);
+}
+
+.answer-btn[data-answer="misleading"]:focus {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.4);
+}
+
+/* Icon/label animation on hover */
+.answer-btn:hover .answer-label {
+  transform: scale(1.05);
+}
+
+.answer-label {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+/* Shimmer effect on hover */
+.answer-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.answer-btn:hover::before {
+  left: 100%;
+}
+
+/* Selected state (after clicking) */
+.answer-btn.selected {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+.answer-btn.selected[data-answer="true"] {
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.25) 0%, rgba(30, 41, 59, 1) 100%);
+  border-color: #22c55e;
+}
+
+.answer-btn.selected[data-answer="false"] {
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.25) 0%, rgba(30, 41, 59, 1) 100%);
+  border-color: #ef4444;
+}
+
+.answer-btn.selected[data-answer="misleading"] {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.25) 0%, rgba(30, 41, 59, 1) 100%);
+  border-color: #f59e0b;
+}
+
+/* Disabled state for non-selected buttons after answer */
+.answer-btn.disabled:not(.selected) {
+  opacity: 0.5;
+  pointer-events: none;
+  transform: none;
+}
+
+/* Pulse animation for correct answer reveal */
+@keyframes correctPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+}
+
+@keyframes wrongShake {
+  0%, 100% { transform: translateX(4px); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.answer-btn.correct-answer {
+  animation: correctPulse 1s ease-in-out 2;
+}
+
+.answer-btn.wrong-answer {
+  animation: wrongShake 0.4s ease-in-out;
+}

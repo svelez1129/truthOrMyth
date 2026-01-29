@@ -27,19 +27,25 @@ document.querySelectorAll('[data-option]').forEach(function(option) {
       correctEl.setAttribute('stroke-width', '3');
     }
     
+    // Add correct styling
+    correctEl.setAttribute('fill', 'rgba(34, 197, 94, 0.1)');
+    correctEl.classList.add('find-option-correct');
+
     if (isCorrect) {
-      feedbackBox.className = 'p-4 rounded-lg bg-green-900 border border-green-500';
-      feedbackText.textContent = 'Correct! The Y-axis starts at 318,000 instead of 0. This makes the increase from ~323,000 to ~333,000 look dramatic, when it\'s actually only about a 3% increase. If the Y-axis started at 0, the line would appear almost flat.';
+      feedbackBox.className = 'find-feedback find-feedback-correct p-5 rounded-lg';
+      feedbackText.innerHTML = "<strong class='text-green-400'>Correct!</strong> The Y-axis starts at 318,000 instead of 0. This makes the increase from ~323,000 to ~333,000 look dramatic, when it's actually only about a 3% increase. If the Y-axis started at 0, the line would appear almost flat.";
     } else {
-      // Highlight wrong answer in red (stroke only)
+      // Highlight wrong answer in red
       var wrongEl = document.getElementById('visual-' + selected);
       if (wrongEl) {
         wrongEl.setAttribute('stroke', '#ef4444');
         wrongEl.setAttribute('stroke-width', '3');
+        wrongEl.setAttribute('fill', 'rgba(239, 68, 68, 0.1)');
+        wrongEl.classList.add('find-option-wrong');
       }
-      
-      feedbackBox.className = 'p-4 rounded-lg bg-red-900 border border-red-500';
-      feedbackText.textContent = 'Not quite! The problem is the Y-axis (A). It starts at 318,000 instead of 0, making the increase from ~323,000 to ~333,000 look dramatic when it\'s actually only about a 3% increase. If the Y-axis started at 0, the line would appear almost flat.';
+
+      feedbackBox.className = 'find-feedback find-feedback-wrong p-5 rounded-lg';
+      feedbackText.innerHTML = "<strong class='text-red-400'>Not quite!</strong> The problem is the Y-axis (A). It starts at 318,000 instead of 0, making the increase from ~323,000 to ~333,000 look dramatic when it's actually only about a 3% increase. If the Y-axis started at 0, the line would appear almost flat.";
     }
     
     // Show continue button
@@ -79,12 +85,25 @@ if (previousAnswer) {
   var feedbackBox = document.getElementById('feedback-box');
   var feedbackText = document.getElementById('feedback-text');
   
+  // Add correct styling
+  correctEl.setAttribute('fill', 'rgba(34, 197, 94, 0.1)');
+
+  // If wrong, also highlight the wrong answer in red
+  if (!isCorrect) {
+    var wrongEl = document.getElementById('visual-' + selected);
+    if (wrongEl) {
+      wrongEl.setAttribute('stroke', '#ef4444');
+      wrongEl.setAttribute('stroke-width', '3');
+      wrongEl.setAttribute('fill', 'rgba(239, 68, 68, 0.1)');
+    }
+  }
+
   if (isCorrect) {
-    feedbackBox.className = 'p-4 rounded-lg bg-green-900 border border-green-500';
-    feedbackText.textContent = 'Correct! The Y-axis starts at 318,000 instead of 0. This makes the increase from ~323,000 to ~333,000 look dramatic, when it\'s actually only about a 3% increase. If the Y-axis started at 0, the line would appear almost flat.';
+    feedbackBox.className = 'find-feedback find-feedback-correct p-5 rounded-lg';
+    feedbackText.innerHTML = "<strong class='text-green-400'>Correct!</strong> The Y-axis starts at 318,000 instead of 0. This makes the increase from ~323,000 to ~333,000 look dramatic, when it's actually only about a 3% increase. If the Y-axis started at 0, the line would appear almost flat.";
   } else {
-    feedbackBox.className = 'p-4 rounded-lg bg-red-900 border border-red-500';
-    feedbackText.textContent = 'Not quite! The problem is the Y-axis (A). It starts at 318,000 instead of 0, making the increase from ~323,000 to ~333,000 look dramatic when it\'s actually only about a 3% increase. If the Y-axis started at 0, the line would appear almost flat.';
+    feedbackBox.className = 'find-feedback find-feedback-wrong p-5 rounded-lg';
+    feedbackText.innerHTML = "<strong class='text-red-400'>Not quite!</strong> The problem is the Y-axis (A). It starts at 318,000 instead of 0, making the increase from ~323,000 to ~333,000 look dramatic when it's actually only about a 3% increase. If the Y-axis started at 0, the line would appear almost flat.";
   }
   
   // Show continue button

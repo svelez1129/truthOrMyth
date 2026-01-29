@@ -11,6 +11,9 @@
 
 <body class="bg-slate-900 text-white min-h-screen p-8">
 
+  <!-- Navigation bar -->
+  <div id="nav-bar" class="max-w-2xl mx-auto mb-6"></div>
+
   <div class="max-w-2xl mx-auto text-center">
     <h1 class="text-4xl font-bold mb-2">🎉 Game Complete!</h1>
     <p class="text-slate-400 mb-8">Here's how you did at spotting misleading data</p>
@@ -36,6 +39,14 @@
     <!-- Performance Message -->
     <div id="performance-message" class="bg-slate-800 p-6 rounded-lg mb-8">
       <!-- Filled by JavaScript -->
+    </div>
+
+    <!-- Mini-Map: Your Journey -->
+    <div class="bg-slate-800 p-6 rounded-lg mb-8">
+      <h3 class="font-bold text-cyan-400 mb-4">Your Journey</h3>
+      <div id="mini-map" class="grid grid-cols-7 gap-2">
+        <!-- Filled by JavaScript -->
+      </div>
     </div>
 
     <!-- Key Takeaways -->
@@ -124,9 +135,55 @@
     // Play again function
     function playAgain() {
       ScoreTracker.resetScore();
-      window.location.href = '../../index.html'; 
+      window.location.href = '../../index.html';
     }
+
+    // Generate mini-map
+    const scenarioOrder = [
+      'scenario1',
+      'scenario1-find',
+      'scenario2',
+      'scenario3',
+      'scenario4',
+      'scenario4-find',
+      'scenario5',
+      'scenario6',
+      'scenario7',
+      'scenario7-find',
+      'scenario8',
+      'scenario8-find',
+      'scenario9',
+      'scenario10'
+    ];
+
+    const miniMapContainer = document.getElementById('mini-map');
+    const allAnswers = ScoreTracker._getAll();
+
+    scenarioOrder.forEach((scenarioId, index) => {
+      const answer = allAnswers[scenarioId];
+      const box = document.createElement('div');
+      box.className = 'p-2 rounded border-2 text-center text-sm font-bold';
+
+      const num = index + 1;
+
+      if (answer) {
+        if (answer.correct) {
+          box.className += ' bg-green-500/20 border-green-500 text-green-400';
+          box.innerHTML = num + '<span class="ml-1">✓</span>';
+        } else {
+          box.className += ' bg-red-500/20 border-red-500 text-red-400';
+          box.innerHTML = num + '<span class="ml-1">✗</span>';
+        }
+      } else {
+        // Not answered (skipped or find page)
+        box.className += ' bg-slate-700/50 border-slate-600 text-slate-500';
+        box.innerHTML = num + '<span class="ml-1">-</span>';
+      }
+
+      miniMapContainer.appendChild(box);
+    });
   </script>
+  <script src="../js/navigation.js"></script>
 
 </body>
 

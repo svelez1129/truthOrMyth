@@ -1,7 +1,7 @@
 // Scenario 6 - US Poverty Line Chart - Answer is FALSE
 const correctAnswer = "false";
 const scenarioId = "scenario6";
-const nextPage = "scenario7.html";
+const nextPage = "scenario6-real.html";
 
 document.querySelectorAll('button[data-answer]').forEach(function(button) {
   button.addEventListener('click', function() {

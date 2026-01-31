@@ -1,7 +1,7 @@
 // Scenario 5 - Literacy vs Illiteracy (UNESCO Data) - Answer is TRUE
 const correctAnswer = "true";
 const scenarioId = "scenario5";
-const nextPage = "scenario6.html";
+const nextPage = "scenario5-real.html";
 
 document.querySelectorAll('button[data-answer]').forEach(function(button) {
   button.addEventListener('click', function() {

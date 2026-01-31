@@ -1,7 +1,7 @@
 // Scenario 3 - Population Growth (UN Data) - Answer is TRUE
 const correctAnswer = "true";
 const scenarioId = "scenario3";
-const nextPage = "scenario4.html";
+const nextPage = "scenario3-real.html";
 
 document.querySelectorAll('button[data-answer]').forEach(function(button) {
   button.addEventListener('click', function() {

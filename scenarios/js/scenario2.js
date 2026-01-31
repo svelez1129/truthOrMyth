@@ -1,7 +1,7 @@
 // Scenario 2 - Ice Cream Sales vs Drowning Deaths (Correlation ≠ Causation)
 const correctAnswer = "false";
 const scenarioId = "scenario2";
-const nextPage = "scenario3.html";
+const nextPage = "scenario2-real.html";
 
 document.querySelectorAll('button[data-answer]').forEach(function(button) {
   button.addEventListener('click', function() {

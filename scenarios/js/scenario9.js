@@ -1,7 +1,7 @@
 // Scenario 9 - Answer is FALSE
 const correctAnswer = "false";
 const scenarioId = "scenario9";
-const nextPage = "scenario10.html";
+const nextPage = "scenario9-real.html";
 
 document.querySelectorAll('button[data-answer]').forEach(function(button) {
   button.addEventListener('click', function() {
